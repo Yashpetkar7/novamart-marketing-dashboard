@@ -5,7 +5,11 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import warnings
+import os
 warnings.filterwarnings('ignore')
+
+# Get the directory where this script is located
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Page Configuration
 st.set_page_config(
@@ -36,17 +40,17 @@ st.markdown("""
 # Load Data
 @st.cache_data
 def load_data():
-    campaign = pd.read_csv('data/campaign_performance.csv')
-    customer = pd.read_csv('data/customer_data.csv')
-    product = pd.read_csv('data/product_sales.csv')
-    lead_score = pd.read_csv('data/lead_scoring_results.csv')
-    geographic = pd.read_csv('data/geographic_data.csv')
-    channel_attr = pd.read_csv('data/channel_attribution.csv')
-    funnel = pd.read_csv('data/funnel_data.csv')
-    customer_journey = pd.read_csv('data/customer_journey.csv')
-    feature_imp = pd.read_csv('data/feature_importance.csv')
-    correlation = pd.read_csv('data/correlation_matrix.csv')
-    learning_curve = pd.read_csv('data/learning_curve.csv')
+    campaign = pd.read_csv(os.path.join(BASE_DIR, 'campaign_performance.csv'))
+    customer = pd.read_csv(os.path.join(BASE_DIR, 'customer_data.csv'))
+    product = pd.read_csv(os.path.join(BASE_DIR, 'product_sales.csv'))
+    lead_score = pd.read_csv(os.path.join(BASE_DIR, 'lead_scoring_results.csv'))
+    geographic = pd.read_csv(os.path.join(BASE_DIR, 'geographic_data.csv'))
+    channel_attr = pd.read_csv(os.path.join(BASE_DIR, 'channel_attribution.csv'))
+    funnel = pd.read_csv(os.path.join(BASE_DIR, 'funnel_data.csv'))
+    customer_journey = pd.read_csv(os.path.join(BASE_DIR, 'customer_journey.csv'))
+    feature_imp = pd.read_csv(os.path.join(BASE_DIR, 'feature_importance.csv'))
+    correlation = pd.read_csv(os.path.join(BASE_DIR, 'correlation_matrix.csv'))
+    learning_curve = pd.read_csv(os.path.join(BASE_DIR, 'learning_curve.csv'))
     
     return {
         'campaign': campaign,
